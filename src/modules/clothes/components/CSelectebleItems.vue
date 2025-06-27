@@ -7,11 +7,12 @@ import type { ClothesItemType } from '../types'
 
 const store = useClothesStore()
 const selectedItem = ref<ClothesItemType[]>([])
+const MAX_SELECTED_ITEMS = 6
 
 function clickHandler(item: ClothesItemType) {
   if (selectedItem.value.some((i) => i.id === item.id)) {
     selectedItem.value = selectedItem.value.filter((i) => i.id !== item.id)
-  } else {
+  } else if (selectedItem.value.length < MAX_SELECTED_ITEMS) {
     selectedItem.value.push(item)
   }
 }
@@ -26,15 +27,10 @@ function isSelected(item: ClothesItemType): boolean {
       class="border-white border-2 p-2 w-1/2 gap-2 rounded-md min-h-28 flex flex-col justify-end"
     >
       <div class="grid grid-cols-4 gap-2">
-        <CItem
-          v-for="item of selectedItem"
-          :key="item.id"
-          :item="item"
-          class="hover:!scale-100 !cursor-auto"
-        />
+        <CItem v-for="item of selectedItem" :key="item.id" :item="item" class="hover:scale-100" />
       </div>
       <p class="text-xs text-gray-400">
-        Selected: {{ selectedItem.length }} / {{ store.availibleForChooseClothes.length }}
+        Selected: {{ selectedItem.length }} / {{ MAX_SELECTED_ITEMS }}
       </p>
     </div>
     <div class="border-white border-2 p-2 rounded-md grid grid-cols-4 gap-2 min-h-30 w-full">
