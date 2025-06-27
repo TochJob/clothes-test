@@ -3,7 +3,7 @@ import ClothesPage from '@clothes/ClothesPage.vue'
 </script>
 
 <template>
-  <main>
-    <ClothesPage />
+  <main class="flex w-full justify-center m-auto">
+    <ClothesPage class="w-9/12" />
   </main>
 </template>

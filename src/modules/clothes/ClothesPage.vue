@@ -1,9 +1,19 @@
 <script setup lang="ts">
-import CItem from './components/CItem.vue'
+import { onMounted } from 'vue'
+import { useClothesStore } from './store/clothes'
+import CUsersItems from './components/CUsersItems.vue'
+import CSelectebleItems from './components/CSelectebleItems.vue'
+
+const store = useClothesStore()
+
+onMounted(() => {
+  store.fetchClothes()
+})
 </script>
 
 <template>
-  <div>
-    <CItem />
+  <div class="flex gap-2">
+    <CSelectebleItems class="w-1/2" />
+    <CUsersItems class="w-1/2" />
   </div>
 </template>
