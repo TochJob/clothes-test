@@ -12,7 +12,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex gap-2">
+  <div class="flex gap-2 items-end">
     <CSelectebleItems class="w-1/2" />
     <CUsersItems class="w-1/2" />
   </div>

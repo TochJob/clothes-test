@@ -15,7 +15,7 @@ export const useClothesStore = defineStore('clothes', () => {
 
     setTimeout(() => {
       availibleClothes.value = right
-    }, 1000)
+    }, 2000)
   }
 
   return {
